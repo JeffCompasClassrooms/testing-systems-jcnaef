@@ -120,6 +120,12 @@ def describe_Failure():
             add_squirrels_to_db([{"name": "Frank", "size": "small"}])
             response = requests.post(f"{URL}/squirrels/1", data={"name": "George","size": "medium"})
             assert response.status_code == 404
+        def test_post_incomplete_info_returns_400():
+            response = requests.post(f"{URL}/squirrels", data={"name":"Frank"})
+            assert response.status_code == 400
+
+
+
 
     def describe_PUT_FAIL():
 
